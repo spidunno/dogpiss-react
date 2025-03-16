@@ -362,7 +362,7 @@ export default function App() {
 				>
 					<Card sx={{
 						position: "absolute",
-						bottom: "12px",
+						bottom: "24px",
 						left: "calc(50% - 64px)",
 						display: "flex",
 						width: "fit-content",
