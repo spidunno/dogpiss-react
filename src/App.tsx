@@ -385,19 +385,20 @@ export default function App() {
 						Dog peed
 					</Button>
 					</Card>
-					{/* <Card
+					<Card
 						sx={{
 							position: "absolute",
-							bottom: 0,
-							right: 0,
+							top: "12px",
+							left: "12px",
 							display: 'flex',
 							flexDirection: 'row',
-							borderBottomRightRadius: '0',
-							borderTopRightRadius: '0',
-							borderBottomLeftRadius: '0'
+							maxWidth: "256px"
 						}}
 						size="sm"
 					>
+						<div> Walk your dog, Click the "Dog Peed" button whenever your dog pees and a point will be added to the dataset and shown on the heatmap </div>
+					</Card>
+					{/*
 						<Link href={"https://www.mapbox.com/about/maps/"}>
 							<Typography level="body-xs">© Mapbox</Typography>
 						</Link>
