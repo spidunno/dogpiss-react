@@ -254,7 +254,7 @@ export default function App() {
 						});
 					}}
 				>
-					<StyledMarker rotationAlignment="map" rotation={geolocation.heading || undefined} offset={new Point(0, 0)} color="transparent" sx={(theme) => ({
+					<StyledMarker rotationAlignment="map" offset={new Point(0, 0)} color="transparent" sx={(theme) => ({
 						background: theme.palette.primary.solidBg,
 						border: `2px solid white`,
 						width: "20px",
@@ -264,11 +264,11 @@ export default function App() {
 							display: "none"
 						},
 						transformStyle: "preserve-3d"
-					})} longitude={geolocation.longitude} latitude={geolocation.latitude}>
+					})} longitude={geolocation.longitude} rotation={(geolocation.heading || 0) * (180 / Math.PI)} latitude={geolocation.latitude}>
 						<Box sx={(theme) => ({
 							// rotate: "45deg",
 							transformOrigin: "bottom right",
-							transform: "translateZ(-1px) translateX(-17.5px) translateY(-17.5px) rotate(45deg)",
+							transform: `translateZ(-1px) translateX(-17.5px) translateY(-17.5px) rotate(45deg)`,
 							width: "25px",
 							height: "25px",
 							opacity: "0.75",
