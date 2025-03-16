@@ -3,13 +3,14 @@ import {
 	// AttributionControl,
 	Map,
 	MapRef,
+	Marker,
 	Source,
 	// NavigationControl,
 	ViewState,
 } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { useEffect, useRef, useState } from "react";
-import { StyleSpecification } from "mapbox-gl";
+import { Point, StyleSpecification } from "mapbox-gl";
 import {
 	Box,
 	Button,
@@ -30,7 +31,7 @@ import {
 	PlusIcon,
 	SunIcon,
 } from "lucide-react";
-import { useTheme } from "@mui/joy/styles";
+import { styled, useTheme } from "@mui/joy/styles";
 import { createClient } from "@supabase/supabase-js";
 // import { SearchBox } from "@mapbox/search-js-react";
 // import { accessToken } from "mapbox-gl";
@@ -66,6 +67,8 @@ async function addPoint(coordinates: Position) {
 	console.error(error);
 	return;
 }
+
+const StyledMarker = styled(Marker)({});
 
 export default function App() {
 	const { colorScheme, mode, setMode } = useColorScheme();
@@ -251,6 +254,33 @@ export default function App() {
 						});
 					}}
 				>
+					<StyledMarker rotationAlignment="map" rotation={geolocation.heading || undefined} offset={new Point(0, 0)} color="transparent" sx={(theme) => ({
+						background: theme.palette.primary.solidBg,
+						border: `2px solid white`,
+						width: "20px",
+						height: "20px",
+						borderRadius: "16px",
+						"& svg": {
+							display: "none"
+						},
+						transformStyle: "preserve-3d"
+					})} longitude={geolocation.longitude} latitude={geolocation.latitude}>
+						<Box sx={(theme) => ({
+							// rotate: "45deg",
+							transformOrigin: "bottom right",
+							transform: "translateZ(-1px) translateX(-17.5px) translateY(-17.5px) rotate(45deg)",
+							width: "25px",
+							height: "25px",
+							opacity: "0.75",
+							background: theme.palette.primary.solidBg,
+							position: "relative",
+							// right: "17.5px",
+							// bottom: "17.5px",
+							borderRadius: "100% 0 0 0"
+						})}>
+
+						</Box>
+					</StyledMarker>
 					{loaded ? (
 						<Source
 							type="vector"
