@@ -319,6 +319,15 @@ export default function App() {
 										1,
 										"red",
 									],
+									"heatmap-intensity": [
+										'interpolate',
+										['linear'],
+										['zoom'],
+										0,
+										1,
+										1,
+										1/3
+								]
 								}}
 								// style={{
 								// type: "heatmap",
